@@ -7,7 +7,6 @@ const corsConfig = {
     credential: true,
     methods : ["GET", "POST", "PUT", "DELETE"],
 }
-app.use(cors(corsConfig))
 const port = process.env.SERVER_PORT || 4000
 const path = require('path')
 
@@ -16,6 +15,9 @@ const userRoutes = require('./routes/user.route')
 const informationRoutes = require('./routes/information.route')
 const transactionRoutes = require('./routes/transaction.route')
 
+app.options("", cors(corsConfig))
+app.use(express.static('public'))
+app.use(cors(corsConfig))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'uploads')))
 app.use(authRoutes)
