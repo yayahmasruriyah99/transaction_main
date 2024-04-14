@@ -29,15 +29,6 @@ const updateProfileUser = (data, id, response) => {
     })
 }
 
-const updateProfileImage = (path, id, response) => {
-    const newPath = path.slice(8)
-    userRespository.updateImage(newPath, id, (err) => {
-        if (err) {
-            response(400, err, null)
-            return
-        }
-        response(200, 'Sukses', null)
-    })
-}
+
 
 module.exports = { profileUser, updateProfileUser, updateProfileImage}

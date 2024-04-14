@@ -23,15 +23,6 @@ const updateProfileUser = (req, res) => {
     })
 }
 
-const updateProfileImage = (req, res) => {
-    const token = req.jwt
-    const fotoPath = req.file.path
-    userService.updateProfileImage(fotoPath, token.id, (code, message) => {
-        res.status(code).json({
-            status: code,
-            message
-        })
-    })
-}
+
 
 module.exports = {profileUser, updateProfileUser, updateProfileImage}

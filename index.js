@@ -1,25 +1,14 @@
 const express = require('express')
 require('dotenv').config()
 const app = express()
-const cors = require("cors")
-const corsConfig = {
-    origin: "*",
-    credential: true,
-    methods : ["GET", "POST", "PUT", "DELETE"],
-}
 const port = process.env.SERVER_PORT || 4000
-const path = require('path')
 
 const authRoutes = require('./routes/auth.route')
 const userRoutes = require('./routes/user.route')
 const informationRoutes = require('./routes/information.route')
 const transactionRoutes = require('./routes/transaction.route')
 
-app.options("", cors(corsConfig))
-app.use(express.static('public'))
-app.use(cors(corsConfig))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'uploads')))
 app.use(authRoutes)
 app.use(userRoutes)
 app.use(informationRoutes)

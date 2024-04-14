@@ -38,18 +38,5 @@ const updateUser = (data, id_user, response) => {
     )
 }
 
-const updateImage = (path, id, response) => {
-    db.query(
-        'UPDATE user SET profile_image = ? WHERE id_user = ?',
-        [path, id],
-        (err) => {
-            if (err) {
-                response(err.sqlMessage)
-                return
-            }
-            response(null)
-        }
-    )
-}
 
 module.exports = {getUserByEmail, getUserById, updateUser, updateImage}
